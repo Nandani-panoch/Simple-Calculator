@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class calculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char again;
+
+        System.out.println("===== SIMPLE CALCULATOR =====");
+
+        do {
+            System.out.print("Enter first number: ");
+            double a = sc.nextDouble();
+
+            System.out.print("Enter second number: ");
+            double b = sc.nextDouble();
+
+            System.out.print("Enter operator (+, -, *, /): ");
+            char op = sc.next().charAt(0);
+
+            double ans = 0;
+            boolean valid = true;
+            if (op == '+') {
+                ans = a + b;
+            } else if (op == '-') {
+                ans = a - b;
+            } else if (op == '*') {
+                ans = a * b;
+            } else if (op == '/') {
+                if (b != 0) {
+                    ans = a / b;
+                } else {
+                    System.out.println("Cannot divide by zero!");
+                    valid = false;
+                }
+            } else {
+                System.out.println("Invalid operator!");
+                valid = false;
+            }
+
+            // Showing result
+            if (valid) {
+                System.out.println("Result = " + ans);
+            }
+            System.out.print("Do you want to calculate again? (y/n): ");
+            again = sc.next().charAt(0);
+
+        } while (again == 'y' || again == 'Y');
+
+        System.out.println("Thank you for using my calculator!!!!");
+        sc.close();
+    }
+}
